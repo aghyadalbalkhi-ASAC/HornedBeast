@@ -16,11 +16,11 @@ class HornedBeasts extends Component{
             });
             return(
                 <>
-                <div className="container">
-                    <div className="row">
-                        {horns}
+                    <div className="container">
+                        <div className="row">
+                            {horns}
+                        </div>
                     </div>
-                </div>
                 </>
             );
         }
