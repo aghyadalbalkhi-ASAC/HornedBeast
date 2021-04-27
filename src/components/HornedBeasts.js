@@ -1,45 +1,45 @@
 import React , {Component}from 'react';
-import { CardGroup, Card } from 'react-bootstrap';
+import {Button, Card } from 'react-bootstrap';
 
 class HornedBeasts extends Component{
-        constructor(props){
-            super(props);
-        }
 
-        render(){
-            const horns =this.props.data.map( (horn) => {
-                return(
-                    <div key ={horn.keyword} className="col-12 col-md-5 m-1">
-                        <RenderHornItem horn={horn}/>
-                    </div>
-                );
-            });
-            return(
-                <>
-                    <div className="container">
-                        <div className="row">
-                            {horns}
-                        </div>
-                    </div>
-                </>
-            );
+    constructor(props) {
+        super(props);
+        this.state = {
+            votes: 0
         }
+    }
+    
+    handleVotes = () => this.setState({ votes: this.state.votes + 1 })
+
+    render() {
+        return (
+          // Lab 02
+        <div className="col-12 col-md-3 m-1" id="spc-col-3">
+            <Card style={{ width: '18rem' , margin:'1rem'}}>
+                <Card.Img variant="top" src={this.props.imageUrl} alt='' title={this.props.title} style={{ width: '18rem' }}/>
+                <Card.Body>
+                <Card.Title>{this.props.title}</Card.Title>
+                <Card.Text>
+                    {this.props.description}
+                    <p>Votes for {this.props.title} : {this.state.votes}</p>
+                </Card.Text>
+                <Button onClick={this.handleVotes} variant="primary">Vote</Button>
+                </Card.Body>
+            </Card>
+        </div>
+    
+          // Lab 01
+          // <div>
+          //   <h2>{this.props.title}</h2>
+          //   <p>Votes for {this.props.title} : {this.state.votes}</p>
+          //   <img onClick={this.handleVotes} src={this.props.imageUrl} alt='' title={this.props.title} width='200pz' />
+          //   <p>{this.props.description}</p>
+          // </div>
+        )
+      }
     
 }
 
-function RenderHornItem({horn}) {
-
-    return(
-            <Card>
-                <Card.Img variant="top" src={horn.image_url} />
-                <Card.Body>
-                    <Card.Title>{horn.title}</Card.Title>
-                    <Card.Text>
-                        {horn.description}
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-    );  
-} 
 
 export default HornedBeasts;
