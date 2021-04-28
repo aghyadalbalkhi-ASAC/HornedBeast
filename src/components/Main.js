@@ -1,32 +1,35 @@
 import React , {Component}from 'react';
-import data from '../data/data';
-import HornedBeasts from './HornedBeasts';
 
+import HornedBeasts from './HornedBeasts';
+import {CardColumns} from 'react-bootstrap';
 
 
 class Main extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            data: data
+            data: this.props.data
         }
     }
+
     render() {
+
+        const beasts = this.state.data.map(beast => {
+            return (
+                    <HornedBeasts
+                    title={beast.title}
+                    description={beast.description}
+                    imageUrl={beast.image_url}
+                    selectedBeast = {this.props.selectedBeast}
+                />
+            )
+            })
         return (
             <div className="container">
                 <div className="row">
-                {this.state.data.map(beast => {
-                    return (
-
-                            <HornedBeasts
-                            title={beast.title}
-                            description={beast.description}
-                            imageUrl={beast.image_url}
-                        
-                        />
-                        
-                    )
-                    })}
+                    <CardColumns>
+                        {beasts}
+                    </CardColumns>
                 </div>
             </div>
         )
