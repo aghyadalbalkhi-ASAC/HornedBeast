@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {Button, Card ,Modal} from 'react-bootstrap';
-import HornedBeasts from './HornedBeasts'
 
 class SelectedBeast extends Component {
     
